@@ -1,0 +1,121 @@
+﻿LEIAME
+
+
+
+
+RESPOSTAS AS PERGUNTAS DO TESTE:
+1. Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
+
+Resp: DE acordo com o que foi desenvolvido no notebook de resposta ao desafio, a profissão de empreendedor
+é que mais tem tendência a fazer um empréstimo pessoal. Já a profissão blue-collar é a que tem maior tendência 
+a fazer um empréstimo imobiliário (housing).
+
+
+
+2. Fazendo uma relação entre número de contatos e sucesso da campanha quais
+são os pontos relevantes a serem observados?
+
+Resp: 
+
+Caso se esteja assumindo aqui que se está se referindo ao número de contato feitos na campanha corrente,
+estão analisando-se as an-alises feitas sobre a variável campaign, vemos que os melhores resultados foram obtidos, 
+com 32, 1, 3 e 2 contatos.
+
+Caso se esteja se referindo aqui ao número de contatos feitos antes da campanha começar, para os mesmos clientes,
+então, analisando-se a variável previous, temos o seguinte:
+Associados aos números de vezes que se contactou um cliente em campanhas anteriores, vemos que 
+oe melhpores resultados da campanha atual estão associados à 37, 36, 26 e 10 vezes que se contactou os alvos da campanha atual, em campanhas anteriores.
+
+Vale destacar aqui que a feature campaign tem uma importância maior do que a feature 'previous' de acordo
+
+ com a capacidade de ambas de separar as classes da variável resposta.
+
+3. Baseando-se nos resultados de adesão desta campanha qual o número médio e
+o máximo de ligações que você indica para otimizar a adesão?  
+
+Resp: 
+
+Assumindo-se que nem todo contato feito com o cliente pode ter sido feito por meio telefônico (fixo ou celular);
+isto é, qnue dentro da categoria 'unknown' da variável contact, podem haver outros tipos de contato que não o 
+telefônico, se irá aqui analisar como os contatos feitos por  'telephone' e 'cellular' se relacionam com as médias da 
+variá-vel-resposta y. Para isso é necessário cruzar as informações das variáveis 'contact' 'campaign' e 'y'.
+
+Analisando-se conjuntamente a variável campaign, com a variável contact, e ordenando-se a distribuição conjunta 
+dos valores dessas variáveis por valores decrescentes da média de y (variável binária indicando se houve depósito
+ a termo ou não por parte do público-alvo da campanha), vê-se que as maiores propensões a fazer depósitos (
+indicadas pelas médias de y ao longo dos diferentes valores de contact e campaign) ocorreram com contato por meio
+de telefone fixo (associado Às duas maiores propensões), seguido de contato por celular.
+
+Pra os dois primeiros casos se verificou números de contatos iguais a 17 e 1, durante a campanha corrente. Para
+o último caso (contato por celular) se verificou um número de contatos igual a 1.
+
+Assim, visando-se otimizar a adesão, recomenda-se um número máximo e ligações igual a 17 (nesse caso, todas por telefone 
+fixo) e um número médio de (17+1+1)/3 = 6,3 ligações para se otimizar a adesão da campanha.
+
+4. O resultado da campanha anterior tem relevância na campanha atual?
+
+Sim. A variável poutcome foi uma das que foram melhor ranqueadas de acordo com sus capacidade de separar as 
+classes da variável-resposta (como computado nas feature_importances ao final do notebook).
+
+Em particular, analisando-se as diferentes classes dessa variável vis-a-vis às médias da variável-resposta y,
+vemos que quando poutcome assume o valor de 'sucesso' (success), a taxa de sucesso na campanha atual é muito alta
+(a média de y, no conjunto de treinamento, para poutcome = success foi de 0,663707).
+
+
+5. Qual o fator determinante para que o banco exija um seguro de crédito?
+Resp: Tendo-se em vista que depósitos a termo feitos por pessoas no banco sao uma forma de mitigar riscos de 
+crédito (e portanto funcione como uma espécie de "seguro" contra risco de crédito)dessas 
+pessoas perante o banco, o fator mais importante para explicar como as classes da variável-resposta
+se distribúem foi a duração do último contato feito (duration).
+
+
+6. Quais são as características mais proeminentes de um cliente que possua
+empréstimo imobiliário?
+De acordo com o desenvolvido no notebook resposta, as características mais proeminentes de um cliente típico que 
+possua empréstimo imobiliário são:
+
+- idade média em torno de 39 anos.
+- Um valor médio de balance, de 1175
+- para esse público, em média, o último dia de contato do mês ocorreu no dia 15.
+- tipicamente (em média) a duração média do último contato com um cliente típico que possua crédito imobiliário, 
+ foi de cerca de 259 segundos.
+- tipicamente (em média) o número de contatos feitos com um cliente típico que possua crédito imobiliário, 
+ foi de apenas 1.
+- tipicamente (em média) esse cleinte não foi contatado previamente (ou seja, antes da campanha começar); ou seja, 
+tipicamente não houve nenhum dia que tenha se passado após o cliente ter sido contacttado em uma campanha anterior.
+- Para esse público, tipicamente verifica-se uma taxa de depósitos a termo de cerca de 0,077.
+ 
+
+
+
+
+BIBLIOTECAS UTILIZADAS
+foram utilizadas matplotlib, seaborn, sklearn, numpy, io e pandas, especificamente, utilizando-se os seguintes imports:
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn import datasets
+from io import StringIO
+
+from sklearn.cluster import KMeans
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn.tree import export_graphviz
+from sklearn import metrics
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import f1_score
+from sklearn.metrics import classification_report
+from sklearn.preprocessing import LabelEncoder
+
+
+%matplotlib inline
+
+import numpy as np 
+import pandas as pd 
+
+
+
+#OUTRAS OBSERVAÇÕES:
+Para maiores esclarecimentos favor analisar o notebook com todos os desenvolvimentos, 
+denominado: 'Alfredo's Solutions Bank Marketing-FINAL1.ipynb'
